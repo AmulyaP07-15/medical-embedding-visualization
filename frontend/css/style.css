@@ -1,0 +1,248 @@
+:root {
+    --pink: #FEC5F6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #000000;
+    color: var(--pink);
+    overflow: hidden;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    height: 100vh;
+    transition: grid-template-columns 0.3s ease-in-out;
+}
+
+/* Toggle buttons */
+.toggle-btn {
+    position: absolute;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    background: var(--pink);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+.toggle-btn.left {
+    top: 20px;
+    left: 310px;
+    transition: left 0.3s ease-in-out;
+}
+
+.toggle-btn.right {
+    top: 20px;
+    right: 360px;
+    transition: right 0.3s ease-in-out;
+}
+
+/* Move buttons when panels are hidden */
+body.left-panel-hidden .toggle-btn.left {
+    left: 20px;
+}
+
+body.right-panel-hidden .toggle-btn.right {
+    right: 20px;
+}
+
+/* Control Panel */
+#controls {
+    background: #000000;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 2px solid var(--pink);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+#controls.panel-hidden {
+    transform: translateX(-100%);
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
+}
+
+#controls h1 {
+    font-size: 22px;
+    margin-bottom: 30px;
+    color: var(--pink);
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--pink);
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background: #111;
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#visualize-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--pink);
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+#visualize-btn:hover {
+    transform: translateY(-2px);
+}
+
+#instructions {
+    margin-top: 30px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid var(--pink);
+    border-radius: 4px;
+}
+
+#instructions h3,
+#stats h3,
+#legend h3,
+#text-panel h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--pink);
+}
+
+#instructions p,
+#stats p,
+.legend-item,
+#selected-text {
+    color: var(--pink);
+}
+
+#stats, #legend {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+#legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+/* Visualization Area */
+#visualization {
+    position: relative;
+    background: #000000;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: var(--pink);
+    z-index: 10;
+}
+
+#tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.95);
+    color: var(--pink);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    display: none;
+    max-width: 300px;
+    border: 1px solid var(--pink);
+    z-index: 1000;
+}
+
+/* Text Panel */
+#text-panel {
+    background: #000000;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-left: 2px solid var(--pink);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+#text-panel.panel-hidden {
+    transform: translateX(100%);
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
+}
+
+/* Fullscreen modes */
+#container.fullscreen-left {
+    grid-template-columns: 0 1fr 350px;
+}
+
+#container.fullscreen-right {
+    grid-template-columns: 300px 1fr 0;
+}
+
+#container.fullscreen-both {
+    grid-template-columns: 0 1fr 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 4px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Embedding Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Toggle buttons -->
+    <button id="toggle-left" class="toggle-btn left" title="Toggle Control Panel">☰</button>
+    <button id="toggle-right" class="toggle-btn right" title="Toggle Text Panel">📄</button>
+    
+    <div id="container">
+        <!-- Control Panel -->
+        <div id="controls" class="panel-visible">
+            <h1>Medical Embedding Visualization</h1>
+
+            <div class="control-group">
+                <label for="model-select">Embedding Model:</label>
+                <select id="model-select">
+                    <option value="sentence-bert">Sentence-BERT (General)</option>
+                    <option value="biobert">BioBERT (Biomedical)</option>
+                    <option value="clinical-bert">ClinicalBERT (Clinical)</option>
+                    <option value="triplet-biobert">Fine-tuned BioBERT (Triplet Loss) ⭐</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="reduction-select">Dimensionality Reduction:</label>
+                <select id="reduction-select">
+                    <option value="tsne">t-SNE (Pre-computed)</option>
+                    <option value="umap">UMAP (On-demand)</option>
+                </select>
+            </div>
+
+            <button id="visualize-btn">Visualize</button>
+
+            <div id="instructions">
+                <h3>Controls</h3>
+                <p>🖱️ <strong>Left-click drag</strong> to rotate</p>
+                <p>🔍 <strong>Scroll</strong> to zoom</p>
+                <p>🖱️ <strong>Right-click drag</strong> to pan</p>
+                <p>👆 <strong>Hover</strong> for details</p>
+                <p>🖱️ <strong>Click point</strong> to read full text</p>
+            </div>
+
+            <div id="stats">
+                <h3>Statistics</h3>
+                <p>Total Points: <span id="total-points">-</span></p>
+                <p>Specialties: <span id="num-specialties">6</span></p>
+            </div>
+
+            <div id="legend">
+                <h3>Specialties</h3>
+                <div id="legend-items"></div>
+            </div>
+        </div>
+
+        <!-- 3D Visualization Canvas -->
+        <div id="visualization">
+            <div id="loading">Loading...</div>
+            <div id="tooltip"></div>
+        </div>
+
+        <!-- Text Panel -->
+        <div id="text-panel" class="panel-visible">
+            <h3>Clinical Note</h3>
+            <div id="selected-text">Hover over a point to see details. Click to read the full clinical note.</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

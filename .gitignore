@@ -1,0 +1,42 @@
+nano .gitignore
+```
+
+**Paste this:**
+```
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Large model files (DON'T push to GitHub)
+backend/cache/*.npy
+backend/cache/*.pkl
+backend/models/*.pt
+
+# System files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/
+
+# Mac
+.AppleDouble
+.LSOverride
