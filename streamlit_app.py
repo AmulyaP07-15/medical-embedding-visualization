@@ -177,6 +177,111 @@ Fine-tuning BioBERT with Triplet Margin Loss for Medical Specialty Classificatio
 </p>
 """, unsafe_allow_html=True)
 
+# ==================== WELCOME/INTRO SECTION ====================
+st.markdown("---")
+
+# Welcome message with columns
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.markdown("""
+    <div style='text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(254, 197, 246, 0.1) 100%); border-radius: 20px; border: 2px solid #00d9ff;'>
+        <h2 style='color: #00d9ff; margin-bottom: 1rem;'>👋 Welcome!</h2>
+        <p style='font-size: 1.2rem; color: #FEC5F6; line-height: 1.8;'>
+            This project demonstrates <strong>metric learning</strong> applied to medical text classification.
+            I fine-tuned BioBERT using <strong>triplet margin loss</strong> to improve how medical notes 
+            cluster by specialty.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Quick overview in 3 columns
+st.markdown("### 🎯 What You'll Find Here")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("""
+    <div style='padding: 1.5rem; background: rgba(0, 217, 255, 0.05); border-radius: 15px; border-left: 4px solid #00d9ff; height: 100%;'>
+        <h4 style='color: #00d9ff;'>📊 Real Results</h4>
+        <p style='color: #FEC5F6;'>
+            See the actual performance improvements from fine-tuning: 
+            <strong>58.7% better retrieval accuracy</strong> and <strong>79% better cluster separation</strong>.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div style='padding: 1.5rem; background: rgba(254, 197, 246, 0.05); border-radius: 15px; border-left: 4px solid #FEC5F6; height: 100%;'>
+        <h4 style='color: #FEC5F6;'>🎨 Interactive Viz</h4>
+        <p style='color: #FEC5F6;'>
+            Explore 900 medical notes in 3D embedding space. 
+            <strong>Rotate, zoom, and click</strong> to see how specialties cluster together.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    st.markdown("""
+    <div style='padding: 1.5rem; background: rgba(0, 255, 255, 0.05); border-radius: 15px; border-left: 4px solid #00ffff; height: 100%;'>
+        <h4 style='color: #00ffff;'>🔬 Deep Dive</h4>
+        <p style='color: #FEC5F6;'>
+            Understand the technical details: 
+            <strong>triplet loss, training process, and evaluation metrics</strong> explained.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# The Problem & Solution
+with st.expander("💡 The Problem I Solved", expanded=False):
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("#### ❌ The Challenge")
+        st.markdown("""
+        **Pre-trained BioBERT** performs poorly at clustering medical notes by specialty:
+
+        - Specialties mix together randomly
+        - Hard to retrieve similar cases
+        - No clear separation between categories
+        - Silhouette score near **zero** (essentially random)
+        """)
+
+    with col2:
+        st.markdown("#### ✅ My Solution")
+        st.markdown("""
+        **Fine-tune with triplet margin loss** to learn better representations:
+
+        - Pull same-specialty notes closer together
+        - Push different-specialty notes apart
+        - Optimize for retrieval and clustering
+        - Achieved **0.28 silhouette score** (strong clustering)
+        """)
+
+# How to use this app
+with st.expander("🚀 How to Use This App", expanded=False):
+    st.markdown("""
+    **Navigate through the tabs above:**
+
+    1. **📊 Performance Metrics** - See the improvement numbers and charts
+    2. **🎯 3D Visualization** - Interact with the embedding space
+    3. **📈 Comparison Analysis** - Compare before vs after side-by-side
+    4. **🔬 Technical Details** - Dive into the implementation
+
+    **Try this:**
+    - Select different models from the sidebar
+    - Switch between t-SNE and UMAP
+    - Hover over points in the 3D plot
+    - Check out the robotics applications section!
+    """)
+
+st.markdown("---")
+
 # Sidebar
 with st.sidebar:
     st.markdown("## ⚙️ Configuration")
