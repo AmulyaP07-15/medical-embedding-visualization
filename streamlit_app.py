@@ -15,7 +15,14 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import umap
+import os
+import subprocess
 
+# Auto-generate sample data if cache doesn't exist
+if not os.path.exists('backend/cache/data_info.pkl'):
+    print("🔄 Generating sample data for demo...")
+    subprocess.run(['python', 'create_sample_data.py'])
+    print("✅ Sample data ready!")
 # Page config with custom theme
 st.set_page_config(
     page_title="Medical Embedding Analysis",
